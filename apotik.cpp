@@ -24,13 +24,15 @@ void buat();
 void daftar();
 void cari();
 void sorting();
+void hapus();
+void hapus_semua();
 
 int main(){
     obat->indeks = -1;
     do {
         //clear();
         cout << "[MAIN MENU]" << endl;
-        cout << "1. BUAT \t 2. DAFTAR \t 3. CARI" << endl;
+        cout << "1. BUAT \t 2. DAFTAR \t 3. CARI \t 4. HAPUS \t 5. HAPUS SEMUA \t 6. KELUAR" << endl;
         cout << "MASUKKAN NOMOR MENU : "; cin >> nm;
         switch(nm){
             case 1 : 
@@ -42,10 +44,18 @@ int main(){
             case 3 :
                 clear(); cari();
             break;
+            case 4 :
+                clear(); hapus();
+            break;
+            case 5 :
+                clear(); hapus_semua();
+            break;
+            case 6 :
+            break;
             default :
             break;
         }
-    } while(nm != 7);
+    } while(nm != 6);
 }
 
 void clear(void){
@@ -160,3 +170,20 @@ void sorting(){
     }
 }
 
+void hapus(){
+    if(kosong() == true){
+        cout << "DATA KOSONG!" << endl;
+    } else {
+        obat->indeks--;
+        cout << "DATA TERAKHIR BERHASIL DIHAPUS!" << endl;
+    }
+}
+
+void hapus_semua(){
+    if(kosong() == true){
+        cout << "DATA KOSONG!" << endl;
+    } else {
+        obat->indeks = -1;
+        cout << "SEMUA DATA BERHASIL DIHAPUS!" << endl;
+    }
+}
