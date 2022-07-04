@@ -18,7 +18,7 @@ struct Obat {
 Obat *obat = new Obat[10];
 
 // DEKLARASI FUNCTION
-void clear();
+void bersih();
 bool kosong();
 void buat();
 void daftar();
@@ -36,19 +36,19 @@ int main(){
         cout << "MASUKKAN NOMOR MENU : "; cin >> nm;
         switch(nm){
             case 1 : 
-                clear(); buat();
+                bersih(); buat();
             break;
             case 2 :
-                clear(); daftar();
+                bersih(); daftar();
             break;
             case 3 :
-                clear(); cari();
+                bersih(); cari();
             break;
             case 4 :
-                clear(); hapus();
+                bersih(); hapus();
             break;
             case 5 :
-                clear(); hapus_semua();
+                bersih(); hapus_semua();
             break;
             case 6 :
             break;
@@ -58,7 +58,7 @@ int main(){
     } while(nm != 6);
 }
 
-void clear(void){
+void bersih(void){
     system("clear || cls");
     return;
 }
