@@ -24,6 +24,7 @@ void buat();
 void daftar();
 void cari();
 void sorting();
+void edit();
 void hapus();
 void hapus_semua();
 
@@ -32,7 +33,7 @@ int main(){
     do {
         //clear();
         cout << "[MAIN MENU]" << endl;
-        cout << "1. BUAT \t 2. DAFTAR \t 3. CARI \t 4. HAPUS \t 5. HAPUS SEMUA \t 6. KELUAR" << endl;
+        cout << "1. BUAT \t 2. DAFTAR \t 3. CARI \t 4. EDIT \t 5. HAPUS \t 6. HAPUS SEMUA \t 7. KELUAR" << endl;
         cout << "MASUKKAN NOMOR MENU : "; cin >> nm;
         switch(nm){
             case 1 : 
@@ -45,17 +46,20 @@ int main(){
                 bersih(); cari();
             break;
             case 4 :
-                bersih(); hapus();
+                bersih(); edit();
             break;
             case 5 :
-                bersih(); hapus_semua();
+                bersih(); hapus();
             break;
             case 6 :
+                bersih(); hapus_semua();
+            break;
+            case 7 :
             break;
             default :
             break;
         }
-    } while(nm != 6);
+    } while(nm != 7);
 }
 
 void bersih(void){
@@ -167,6 +171,45 @@ void sorting(){
                 }
             }
         }
+    }
+}
+
+void edit(){
+    string t_nama; bool lock;
+    if(kosong() == true){
+        cout << "DATA KOSONG!" << endl;
+    } else {
+        do {
+            cout << "MASUKKAN NAMA OBAT YANG INGIN DIEDIT : "; cin >> t_nama;
+            for(i = 0; i <= obat->indeks; i++){
+                if(t_nama == obat[i].nama){
+                    lock = true;
+                    break;
+                } else {
+                    lock = false;
+                }
+            }
+            if(lock == true){
+                cout << "=================================================================================" << endl;
+                cout << "| NAMA \t\t| HARGA \t| PENYAKIT \t| USIA   \t| KADALUWARSA \t|" << endl;
+                cout << "=================================================================================" << endl;
+                cout << "| " << obat[i].nama << " \t| " << obat[i].harga << " \t| " << obat[i].penyakit
+                << " \t| " << obat[i].usia << " \t| " << obat[i].kadaluwarsa << " \t|" << endl;
+                cout << "=================================================================================" << endl;
+
+                cout << "MULAI MENGEDIT DATA" << endl;
+
+                cout << "MASUKKAN NAMA OBAT : "; cin.ignore(); cin.getline(obat[i].nama, sizeof(obat->nama));
+                cout << "MASUKKAN HARGA OBAT : "; cin.getline(obat[i].harga, sizeof(obat->harga));
+                cout << "MASUKKAN PENYAKIT OBAT : "; cin.getline(obat[i].penyakit, sizeof(obat->penyakit));
+                cout << "MASUKKAN USIA PENGGUNA : "; cin.getline(obat[i].usia, sizeof(obat->usia));
+                cout << "MASUKKAN KADALUWARSA OBAT : "; cin.getline(obat[i].kadaluwarsa, sizeof(obat->kadaluwarsa));
+                cout << endl;
+            } else {
+                cout << "DATA YANG ANDA CARI TIDAK DITEMUKAN!" << endl;
+            }
+            cout << endl << "KEMBALI KE MAIN MENU? [y/n] : "; cin >> q;
+        } while(q != 'y');
     }
 }
 
