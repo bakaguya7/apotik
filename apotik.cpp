@@ -31,7 +31,7 @@ void hapus_semua();
 int main(){
     obat->indeks = -1;
     do {
-        //clear();
+        cout << "=== SISTEM CRUD APOTIK ===" << endl;
         cout << "[MAIN MENU]" << endl;
         cout << "1. BUAT \t 2. DAFTAR \t 3. CARI \t 4. EDIT \t 5. HAPUS \t 6. HAPUS SEMUA \t 7. KELUAR" << endl;
         cout << "MASUKKAN NOMOR MENU : "; cin >> nm;
